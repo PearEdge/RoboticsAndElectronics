@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f1724;
+      --bg:#0f1724; /* deep navy */
       --card:#0b1220;
       --accent:#6EE7B7;
       --accent-2:#60A5FA;
@@ -23,23 +23,31 @@
       margin:0;
       font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
       background:linear-gradient(180deg,var(--bg) 0%, #071026 100%);
-      color:#e6eef8;
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
       line-height:1.4;
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:32px}
 
+    /* header */
     header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:60px;height:auto;border-radius:12px;box-shadow:0 6px 20px rgba(6,11,30,0.4);object-fit:contain}
-    .brand h1{margin:0;font-size:18px;letter-spacing:-0.2px}
-    nav{display:flex;gap:18px;align-items:center}
+    .logo {
+  width: 60px;         /* adjust for logo size */
+  height: auto;
+  border-radius: 12px; /* keeps soft corners */
+  box-shadow: 0 6px 20px rgba(6,11,30,0.4);
+  object-fit: contain;
+}
     nav a{padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted)}
     nav a.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#012;padding:8px 14px}
     .mobile-toggle{display:none}
 
+    /* hero */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:28px 0}
-    .hero-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 8px 40px rgba(3,7,18,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .hero-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 8px 40px rgba(3,7,18,0.6);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.03)}
     .eyebrow{display:inline-block;padding:6px 10px;background:var(--glass);border-radius:999px;color:var(--accent);font-weight:700;font-size:12px}
     h2{font-size:34px;margin:12px 0 8px}
     p.lead{color:var(--muted);margin:0 0 18px}
@@ -48,11 +56,13 @@
     .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#012}
     .btn.outline{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted)}
 
+    /* cards grid */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
     .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
     .card h3{margin:0 0 8px;font-size:16px}
     .small{font-size:13px;color:var(--muted)}
 
+    /* sections */
     section{padding:48px 0;border-top:1px solid rgba(255,255,255,0.02)}
     .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .programs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
@@ -60,13 +70,9 @@
     .safety{display:grid;grid-template-columns:1fr 320px;gap:18px}
     .safety pre{white-space:pre-wrap;font-size:13px;color:var(--muted);margin:0}
 
-    .gallery-grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-    .gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:12px;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease,box-shadow .4s ease}
-    .gallery-grid img.visible{opacity:1;transform:none}
-    .gallery-grid img:hover{transform:scale(1.04);box-shadow:0 6px 24px rgba(0,0,0,0.5)}
-
     footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
 
+    /* responsive */
     @media (max-width:980px){
       .hero{grid-template-columns:1fr}
       .grid{grid-template-columns:repeat(2,1fr)}
@@ -75,8 +81,11 @@
       nav{display:none}
       .mobile-toggle{display:inline-flex}
     }
-    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+    }
 
+    /* tiny helpers */
     .muted{color:var(--muted)}
     .chip{display:inline-block;padding:6px 10px;background:rgba(255,255,255,0.02);border-radius:999px;font-weight:700}
   </style>
@@ -100,40 +109,219 @@
       <button class="mobile-toggle btn outline" aria-expanded="false" onclick="toggleNav()">Menu</button>
     </header>
 
-    <section id="gallery">
-      <div class="section-head">
-        <div>
-          <h2 style="margin:0">Our Learners in Action</h2>
-          <div class="muted">Hands-on creativity — from circuits to full robot builds.</div>
+    <main id="home">
+      <div class="hero">
+        <div class="hero-card">
+          <span class="eyebrow">PearEdge Technologies Ltd.</span>
+          <h2>Building Africa’s Future Engineers with Robotics, Electronics & Edge AI</h2>
+          <p class="lead">Hands-on STEM programs for ages <strong>8–25</strong>. From beginner circuits to autonomous robots and Edge AI deployments — our 4-stage curriculum prepares young innovators to solve real-world problems.</p>
+          <div class="actions">
+            <a class="btn primary" href="#programs">Explore Programs</a>
+            <a class="btn outline" href="#join">Enroll / Join</a>
+          </div>
+          <div class="grid" style="margin-top:22px">
+            <div class="card"><h3>Weekend Clubs</h3><div class="small">3–4 hour sessions, Saturdays</div></div>
+            <div class="card"><h3>Bootcamps</h3><div class="small">Short intensive innovation sprints</div></div>
+            <div class="card"><h3>Projects</h3><div class="small">Real builds: Smart irrigation, autonomous robots, IoT</div></div>
+          </div>
         </div>
-        <div class="chip">Gallery</div>
+
+        <aside style="position:relative">
+          <div class="hero-card" style="height:100%">
+            <h3 style="margin-top:0">Enroll Now — Jan 2026 Cohort</h3>
+            <p class="small">Spaces limited. Parents will be notified of assigned centres across Lagos. Click below to complete the enrollment form.</p>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://forms.gle/5iVqKG6fvEKZHpxm6">Open Enrollment Form</a>
+              <a class="btn outline" href="#contact">Contact Us</a>
+            </div>
+
+            <div style="margin-top:20px">
+              <strong class="muted">Quick facts</strong>
+              <ul style="margin:8px 0 0 18px;color:var(--muted)">
+                <li>Age range: 8–25</li>
+                <li>Teacher ratio: 1:10 max</li>
+                <li>Safety-first: background checks & training</li>
+              </ul>
+            </div>
+
+          </div>
+        </aside>
       </div>
-      <div class="gallery-grid">
-        <img src="robot1.jpg" alt="Kids building robots at PearEdge" />
-        <img src="robot2.jpg" alt="PearEdge Robotics Workshop" />
-        <img src="robot3.jpg" alt="Students coding and testing robots" />
-      </div>
-    </section>
+
+      <section id="programs">
+        <div class="section-head">
+          <div>
+            <h2 style="margin:0">Programs & Curriculum</h2>
+            <div class="muted">Four-stage pathway from Explorer to Innovator with practical capstones.</div>
+          </div>
+          <div class="chip">Hands-on • Project-led • Edge AI</div>
+        </div>
+
+        <div class="programs">
+          <div class="program">
+            <h3>Stage 1 — Explorer (Ages 8–12)</h3>
+            <p class="muted">Introduction to technology, safe creativity, basic electronics, visual coding.</p>
+            <ul class="muted">
+              <li>Paper circuits, LED lamps, solar toy fan</li>
+              <li>Digital citizenship & lab safety</li>
+            </ul>
+          </div>
+
+          <div class="program">
+            <h3>Stage 2 — Builders Foundation (Ages 12–16)</h3>
+            <p class="muted">Circuit design, Arduino, programming in C, and embedded projects.</p>
+            <ul class="muted">
+              <li>Traffic lights, temperature monitors, obstacle robots</li>
+            </ul>
+          </div>
+
+          <div class="program">
+            <h3>Stage 3 — Builders (Ages 15–20)</h3>
+            <p class="muted">Embedded systems, IoT, basic ML, Edge AI demos on microcontrollers.</p>
+          </div>
+
+          <div class="program">
+            <h3>Stage 4 — Innovator (Ages 18–25)</h3>
+            <p class="muted">Advanced robotics, sensor fusion, deployment to Jetson/Coral, entrepreneurship & IP.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="safety">
+        <div class="section-head">
+          <div>
+            <h2 style="margin:0">Safety & Child Protection</h2>
+            <div class="muted">Our Safety & Consent plan ensures a secure, respectful, supervised learning space.</div>
+          </div>
+          <div class="chip">Safeguards • Consent • First-aid</div>
+        </div>
+
+        <div class="safety" style="margin-top:18px">
+          <div class="hero-card">
+            <h3>Key elements</h3>
+            <ul class="muted">
+              <li>Background checks & child-safety orientation for staff</li>
+              <li>Teacher-to-student ratio 1:10 (max); no staff alone with minors</li>
+              <li>Mandatory safety induction before practicals</li>
+              <li>Equipment inspection, safe storage, first-aid & fire extinguisher</li>
+              <li>Digital safety, parental consent for data/photos</li>
+              <li>Incident logbook and immediate parent notification</li>
+            </ul>
+          </div>
+
+          <aside class="hero-card">
+            <h4>Safety Plan (Short)</h4>
+            <pre>Purpose: Secure, respectful, supervised learning.
+Child protection: Background checks; 1:10 ratio; attendance logged.
+Lab safety: Inductions, PPE, inspections, hazardous materials supervised.
+Digital safety: Privacy, parental consent, monitored platforms.
+Emergency: Visible exits, first-aid responder, incident log.
+Ethics: Inclusive, report concerns confidentially.
+Review: Annual; aligned with UNICEF & British Council guidelines.
+</pre>
+          </aside>
+        </div>
+      </section>
+
+      <section id="join">
+        <div class="section-head">
+          <div>
+            <h2 style="margin:0">Join Us / Enroll</h2>
+            <div class="muted">Click the button to open the Google enrollment form (opens in a new tab).</div>
+          </div>
+          <div class="chip">January 2026 Cohort</div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:14px;flex-wrap:wrap">
+          <a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://forms.gle/5iVqKG6fvEKZHpxm6">Open Enrollment Form</a>
+          <a class="btn outline" href="#contact">Contact Admissions</a>
+        </div>
+
+      </section>
+
+      <section id="contact">
+        <div class="section-head">
+          <div>
+            <h2 style="margin:0">Contact & Socials</h2>
+            <div class="muted">Questions? Reach out — we love hearing from parents, schools, and partners.</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px">
+          <div class="hero-card">
+            <h3>Get in touch</h3>
+            <p class="muted">Email: <strong>info.pearedge@gmail.com</strong></p>
+            <p class="muted">WhatsApp: <strong><a href="https://wa.me/2348103443614" target="_blank" rel="noopener noreferrer">+234 810 344 3614</a></strong></p>
+
+            <h4 style="margin-top:12px">Social</h4>
+            <ul class="muted">
+              <li><a href="https://www.youtube.com/@PearEdgeRoboticsandElectronics" target="_blank">YouTube: PearEdge Robotics and Electronics Club</a></li>
+              <li><a href="https://www.facebook.com/PearEdgeRoboticsAndElectronics" target="_blank">Facebook: PearEdge Robotics & Electronics Club</a></li>
+              <li><a href="https://www.instagram.com/pearedge_robotics_club" target="_blank">Instagram: pearedge_robotics_club</a></li>
+              <li><a href="https://www.tiktok.com/@pearedge_robotics_club" target="_blank">TikTok: @pearedge_robotics_club</a></li>
+            </ul>
+          </div>
+
+          <aside class="hero-card" style="display:flex;flex-direction:column;gap:10px">
+            <h4>Quick actions</h4>
+            <button class="btn primary" onclick="copyEmail()">Copy Email</button>
+            <button class="btn outline" onclick="openWhatsApp()">Open WhatsApp</button>
+            <a class="btn outline" href="mailto:info.pearedge@gmail.com">Send Email</a>
+            <div class="muted" style="margin-top:auto">© PearEdge Robotics & Electronics Club — Powered by PearEdge Technologies Ltd.</div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
 
     <footer>
       <div class="muted">PearEdge Robotics & Electronics Club — Think. Build. Innovate.</div>
       <div class="muted">Designed for Jan 2026 cohort • Lagos</div>
     </footer>
+
   </div>
 
   <script>
-    function toggleNav(){const nav=document.querySelector('nav');const btn=document.querySelector('.mobile-toggle');if(!nav)return;const expanded=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!expanded));nav.style.display=expanded?'none':'flex';}
-    function copyEmail(){navigator.clipboard&&navigator.clipboard.writeText('info.pearedge@gmail.com').then(()=>{alert('Email copied to clipboard: info.pearedge@gmail.com')}).catch(()=>{prompt('Copy email','info.pearedge@gmail.com')});}
-    function openWhatsApp(){window.open('https://wa.me/2348103443614','_blank');}
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href.startsWith('#')){e.preventDefault();const el=document.querySelector(href);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}});});
-    document.addEventListener('DOMContentLoaded',()=>{
-      const observer=new IntersectionObserver(entries=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}
-        });
-      },{threshold:0.2});
-      document.querySelectorAll('.gallery-grid img').forEach(img=>observer.observe(img));
+    // mobile nav toggle (simple)
+    function toggleNav(){
+      const nav = document.querySelector('nav');
+      const btn = document.querySelector('.mobile-toggle');
+      if(!nav) return;
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      nav.style.display = expanded ? 'none' : 'flex';
+    }
+
+    // copy email helper
+    function copyEmail(){
+      navigator.clipboard && navigator.clipboard.writeText('info.pearedge@gmail.com')
+        .then(()=>{alert('Email copied to clipboard: info.pearedge@gmail.com')})
+        .catch(()=>{prompt('Copy email', 'info.pearedge@gmail.com')});
+    }
+    function openWhatsApp(){
+      window.open('https://wa.me/2348103443614', '_blank');
+    }
+
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.startsWith('#')){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
     });
+
+    // tiny reveal animation
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.querySelectorAll('.hero-card, .card, .program, .programs > div, .chip').forEach((el,i)=>{
+        el.style.opacity='0';
+        el.style.transform='translateY(8px)';
+        setTimeout(()=>{el.style.transition='all .6s cubic-bezier(.2,.9,.3,1)'; el.style.opacity='1'; el.style.transform='none'}, 100 + i*80)
+      })
+    })
   </script>
 </body>
 </html>
