@@ -89,6 +89,47 @@
     /* tiny helpers */
     .muted{color:var(--muted)}
     .chip{display:inline-block;padding:6px 10px;background:rgba(255,255,255,0.02);border-radius:999px;font-weight:700}
+    /* ✨ Parallax Sections */
+.parallax {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax .overlay {
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  text-align: center;
+  padding: 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(3px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.parallax .overlay h2 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll;
+    height: 40vh;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -127,6 +168,14 @@
           </div>
         </div>
 
+<!-- ✨ PARALLAX SECTION 1 -->
+<section class="parallax" style="background-image: url('robot3.jpg');">
+  <div class="overlay">
+    <h2>Inspiring Young Engineers at Work</h2>
+  </div>
+</section>
+
+        
         <aside style="position:relative">
           <div class="hero-card" style="height:100%">
             <h3 style="margin-top:0">Enroll Now — Jan 2026 Cohort</h3>
@@ -148,13 +197,6 @@
           </div>
         </aside>
       </div>
-
-    <!-- ✨ PARALLAX SECTION 1 -->
-<section class="parallax" style="background-image: url('robot1.png');">
-  <div class="overlay">
-    <h2>Inspiring Young Engineers at Work</h2>
-  </div>
-</section>
 
       
       <section id="programs">
@@ -334,4 +376,5 @@ Review: Annual; aligned with UNICEF & British Council guidelines.
   </script>
 </body>
 </html>
+
 
