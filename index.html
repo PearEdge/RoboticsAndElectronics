@@ -74,14 +74,65 @@
     footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
 
     /* responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .programs{grid-template-columns:1fr}
-      .safety{grid-template-columns:1fr}
-      nav{display:none}
-      .mobile-toggle{display:inline-flex}
-    }
+
+
+
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .programs{grid-template-columns:1fr}
+  .safety{grid-template-columns:1fr}
+
+  /* hide nav by default on mobile */
+  nav {
+    display: none;
+    flex-direction: column;
+    background: rgba(15, 23, 36, 0.98);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    left: 20px;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    z-index: 1000;
+  }
+
+  nav a {
+    display: block;
+    text-align: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-toggle {
+    display: inline-flex;
+    z-index: 1100;
+  }
+
+  /* when open, dropdown fades in */
+  nav.open {
+    display: flex;
+    animation: dropdown 0.3s ease forwards;
+  }
+
+  @keyframes dropdown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+
+
+
+
+
+    
     @media (max-width:640px){
       .grid{grid-template-columns:1fr}
     }
@@ -347,14 +398,25 @@ Review: Annual; aligned with UNICEF & British Council guidelines.
 
   <script>
     // mobile nav toggle (simple)
-    function toggleNav(){
-      const nav = document.querySelector('nav');
-      const btn = document.querySelector('.mobile-toggle');
-      if(!nav) return;
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      nav.style.display = expanded ? 'none' : 'flex';
-    }
+
+    // Close dropdown when a link is clicked (mobile)
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    const nav = document.querySelector('nav');
+    const btn = document.querySelector('.mobile-toggle');
+    nav.classList.remove('open');
+    btn.setAttribute('aria-expanded', false);
+  });
+});
+    
+    function toggleNav() {
+  const nav = document.querySelector('nav');
+  const btn = document.querySelector('.mobile-toggle');
+  const isOpen = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen);
+}
+
+    
 
     // copy email helper
     function copyEmail(){
@@ -389,6 +451,7 @@ Review: Annual; aligned with UNICEF & British Council guidelines.
   </script>
 </body>
 </html>
+
 
 
 
