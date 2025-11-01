@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root {
+    :root{
       --bg:#0f1724;
       --card:#0b1220;
       --accent:#6EE7B7;
@@ -17,72 +17,51 @@
       --muted:#94A3B8;
       --glass:rgba(255,255,255,0.03);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
+    *{box-sizing:border-box}
     body{
+      margin:0;
       font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
       background:linear-gradient(180deg,var(--bg) 0%, #071026 100%);
       color:#e6eef8;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       line-height:1.5;
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:32px}
 
-    /* HEADER */
     header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
     .brand{display:flex;gap:12px;align-items:center}
     .logo{width:60px;height:auto;border-radius:12px;box-shadow:0 6px 20px rgba(6,11,30,0.4);object-fit:contain}
-    .brand h1{margin:0;font-size:18px;letter-spacing:-0.2px}
     nav{display:flex;gap:18px;align-items:center}
-    nav a{padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted);transition:0.3s}
-    nav a:hover{color:white}
+    nav a{padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted)}
     nav a.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#012;padding:8px 14px}
     .mobile-toggle{display:none}
 
-    /* HERO */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:28px 0}
     .hero-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 8px 40px rgba(3,7,18,0.6);border:1px solid rgba(255,255,255,0.03)}
-    .eyebrow{display:inline-block;padding:6px 10px;background:var(--glass);border-radius:999px;color:var(--accent);font-weight:700;font-size:12px}
     h2{font-size:34px;margin:12px 0 8px}
     p.lead{color:var(--muted);margin:0 0 18px}
-    .actions{display:flex;gap:12px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer;transition:0.3s}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;font-weight:700}
     .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#012}
-    .btn.primary:hover{filter:brightness(1.1)}
     .btn.outline{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted)}
-    .btn.outline:hover{color:white;border-color:var(--accent)}
 
-    /* GRID */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:0.3s}
-    .card:hover{transform:translateY(-3px);box-shadow:0 4px 20px rgba(0,0,0,0.4)}
-    .card h3{margin:0 0 8px;font-size:16px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
     .small{font-size:13px;color:var(--muted)}
 
-    /* SECTIONS */
     section{padding:48px 0;border-top:1px solid rgba(255,255,255,0.02)}
-    .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .programs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
     .program{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:20px;border-radius:12px}
     .safety{display:grid;grid-template-columns:1fr 320px;gap:18px}
-    .safety pre{white-space:pre-wrap;font-size:13px;color:var(--muted);margin:0}
+    .safety pre{white-space:pre-wrap;font-size:13px;color:var(--muted)}
 
     /* GALLERY */
-    #gallery .section-head{margin-bottom:18px}
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-    .gallery-grid img{
-      width:100%;height:240px;object-fit:cover;border-radius:12px;
-      opacity:0;transform:translateY(20px);
-      transition:opacity .8s ease,transform .8s ease,box-shadow .4s ease;
-    }
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:20px}
+    .gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:12px;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease,box-shadow .4s ease}
     .gallery-grid img.visible{opacity:1;transform:none}
     .gallery-grid img:hover{transform:scale(1.04);box-shadow:0 6px 24px rgba(0,0,0,0.5)}
 
     footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
 
-    /* RESPONSIVE */
     @media (max-width:980px){
       .hero{grid-template-columns:1fr}
       .grid{grid-template-columns:repeat(2,1fr)}
@@ -91,9 +70,6 @@
       nav{display:none}
       .mobile-toggle{display:inline-flex}
     }
-    @media (max-width:640px){.grid{grid-template-columns:1fr}}
-    .muted{color:var(--muted)}
-    .chip{display:inline-block;padding:6px 10px;background:rgba(255,255,255,0.02);border-radius:999px;font-weight:700}
   </style>
 </head>
 <body>
@@ -109,18 +85,20 @@
       <nav>
         <a href="#home">Home</a>
         <a href="#programs">Programs</a>
-        <a href="#safety">Safety & Values</a>
+        <a href="#safety">Safety</a>
         <a href="#gallery">Gallery</a>
-        <a href="#join" class="cta">Enroll — Jan 2026</a>
+        <a href="#contact">Contact</a>
+        <a href="#join" class="cta">Enroll</a>
       </nav>
-      <button class="mobile-toggle btn outline" aria-expanded="false" onclick="toggleNav()">Menu</button>
+      <button class="mobile-toggle btn outline" onclick="toggleNav()">Menu</button>
     </header>
 
+    <!-- YOUR ORIGINAL CONTENT -->
     <main id="home">
-      <!-- Hero and programs stay the same as your original -->
-      <!-- You don’t need to remove anything -->
+      <!-- your hero, programs, safety, join, and contact sections stay unchanged -->
+      <!-- (just keep them as they are in your current working code) -->
 
-      <!-- Add Gallery Section -->
+      <!-- ADD NEW GALLERY BELOW SAFETY SECTION -->
       <section id="gallery">
         <div class="section-head">
           <div>
@@ -131,10 +109,12 @@
         </div>
         <div class="gallery-grid">
           <img src="robot1.png" alt="Kids building robots at PearEdge" />
-          <img src="robot2.jpg" alt="Robot projects display" />
-          <img src="robot3.jpg" alt="Students testing and coding robots" />
+          <img src="robot2.jpg" alt="Robot projects on display" />
+          <img src="robot3.jpg" alt="Students coding and testing robots" />
         </div>
       </section>
+
+      <!-- keep your join and contact sections here -->
     </main>
 
     <footer>
@@ -144,17 +124,15 @@
   </div>
 
   <script>
-    // Responsive nav
     function toggleNav(){
       const nav=document.querySelector('nav');
       const btn=document.querySelector('.mobile-toggle');
-      if(!nav)return;
       const expanded=btn.getAttribute('aria-expanded')==='true';
       btn.setAttribute('aria-expanded',String(!expanded));
       nav.style.display=expanded?'none':'flex';
     }
 
-    // Smooth scroll
+    // smooth scroll
     document.querySelectorAll('a[href^=\"#\"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const href=a.getAttribute('href');
@@ -166,7 +144,7 @@
       });
     });
 
-    // Gallery fade-in animation
+    // fade-in effect for gallery
     document.addEventListener('DOMContentLoaded',()=>{
       const observer=new IntersectionObserver(entries=>{
         entries.forEach(entry=>{
