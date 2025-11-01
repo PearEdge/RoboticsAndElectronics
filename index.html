@@ -36,12 +36,19 @@
     header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
     .brand{display:flex;gap:12px;align-items:center}
     .logo {
-  width: 60px;         /* adjust for logo size */
+  width: 100px;         /* adjust for logo size */
   height: auto;
-  border-radius: 12px; /* keeps soft corners */
-  box-shadow: 0 6px 20px rgba(6,11,30,0.4);
+  border-radius: 16px; /* keeps soft corners */
+  box-shadow: 0 8px 24px rgba(6,11,30,0.4);
   object-fit: contain;
 }
+
+.brand h1 {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+    
     nav a{padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted)}
     nav a.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#012;padding:8px 14px}
     .mobile-toggle{display:none}
@@ -451,6 +458,7 @@ document.querySelectorAll('nav a').forEach(link => {
   </script>
 </body>
 </html>
+
 
 
 
